@@ -917,14 +917,19 @@ footer p, footer a {
   </div>
 </footer>
 
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2">const SUPABASE_URL = "https://pabzzoxfqxhkdjhimkla.supabase.co";
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+<script>
+const SUPABASE_URL = "https://pabzzoxfqxhkdjhimkla.supabase.co";
 
 const SUPABASE_ANON_KEY = "sb_publishable_wDr3qsA3fDiXdgV9kYoLKQ_SOVuNtFa";
 
 const supabaseClient = window.supabase.createClient(
   SUPABASE_URL,
   SUPABASE_ANON_KEY
-);</script><script>
+);
+
+// القائمة الرئيسية
 const menuToggle = document.getElementById("menuToggle");
 const mainNav = document.getElementById("mainNav");
 
@@ -938,6 +943,7 @@ mainNav.querySelectorAll("a").forEach(link => {
   });
 });
 
+// البحث عن الخدمات
 const searchForm = document.getElementById("searchForm");
 const searchInput = document.getElementById("serviceSearch");
 const serviceCards = document.querySelectorAll(".service-card");
@@ -965,6 +971,5 @@ searchForm.addEventListener("submit", function(event) {
   });
 });
 </script>
-
 </body>
         </html>
