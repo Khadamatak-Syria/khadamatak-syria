@@ -3,159 +3,624 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#087d43">
+<meta name="description" content="خدماتك - منصتك السورية لاكتشاف الخدمات ومقدمي الخدمات في جميع المحافظات.">
 <title>خدماتك | منصتك السورية للخدمات</title>
 
 <style>
+:root {
+  --green: #087d43;
+  --green-dark: #075b34;
+  --green-light: #eaf6ee;
+  --text: #19372a;
+  --muted: #718078;
+  --white: #fff;
+  --bg: #f7faf8;
+  --border: #e6eee8;
+  --shadow: 0 8px 30px rgba(20, 70, 43, .07);
+}
+
 * {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
 }
 
-body {
-  font-family: Tahoma, Arial, sans-serif;
-  background: #f7f9f8;
-  color: #18352a;
+html {
+  scroll-behavior: smooth;
 }
 
+body {
+  font-family: Tahoma, Arial, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.8;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+button, input {
+  font-family: inherit;
+}
+
+.container {
+  width: min(1160px, 92%);
+  margin: auto;
+}
+
+/* Header */
+
 header {
-  background: white;
-  padding: 18px 6%;
+  background: rgba(255,255,255,.96);
+  border-bottom: 1px solid var(--border);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.header-inner {
+  min-height: 78px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  box-shadow: 0 2px 10px #00000010;
+  gap: 20px;
 }
 
 .logo {
-  color: #159447;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--green);
   font-size: 27px;
   font-weight: bold;
 }
 
-nav a {
-  text-decoration: none;
-  color: #244b38;
-  margin: 0 10px;
-}
-
-.hero {
-  background: linear-gradient(135deg, #087d3b, #19a957);
-  color: white;
-  text-align: center;
-  padding: 75px 20px;
-}
-
-.hero h1 {
-  font-size: 38px;
-  margin-bottom: 18px;
-}
-
-.hero p {
-  font-size: 18px;
-  margin-bottom: 28px;
-}
-
-.search {
-  background: white;
-  max-width: 600px;
-  margin: auto;
-  padding: 10px;
-  border-radius: 12px;
-  display: flex;
-}
-
-.search input {
-  flex: 1;
-  border: none;
-  padding: 12px;
-  outline: none;
-  font-size: 16px;
-  min-width: 0;
-}
-
-.search button {
-  background: #159447;
-  color: white;
-  border: none;
-  padding: 12px 20px;
-  border-radius: 8px;
-}
-
-section {
-  padding: 45px 6%;
-}
-
-h2 {
-  text-align: center;
-  margin-bottom: 30px;
-  color: #147b40;
-}
-
-.grid {
+.logo-icon {
+  width: 43px;
+  height: 43px;
+  border-radius: 13px;
+  background: var(--green-light);
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(145px, 1fr));
-  gap: 18px;
+  place-items: center;
+  font-size: 23px;
 }
 
-.card {
-  background: white;
-  padding: 25px 12px;
-  text-align: center;
-  border-radius: 14px;
-  box-shadow: 0 3px 12px #00000009;
-  font-size: 17px;
-  font-weight: bold;
+nav {
+  display: flex;
+  align-items: center;
+  gap: 25px;
 }
 
-.card span {
-  display: block;
-  font-size: 32px;
-  margin-bottom: 12px;
+nav a {
+  color: #40594b;
+  font-size: 14px;
+  transition: .2s;
 }
 
-.provinces {
-  background: #eaf5ed;
+nav a:hover {
+  color: var(--green);
 }
 
-.cta {
-  background: #126b39;
-  color: white;
-  text-align: center;
-  padding: 45px 20px;
-  border-radius: 15px;
-}
-
-.cta h2 {
-  color: white;
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
 }
 
 .btn {
+  border: 0;
+  border-radius: 10px;
+  padding: 11px 20px;
+  font-size: 14px;
+  font-weight: bold;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: .2s;
+}
+
+.btn-primary {
+  background: var(--green);
+  color: white;
+}
+
+.btn-primary:hover {
+  background: var(--green-dark);
+  transform: translateY(-2px);
+}
+
+.btn-light {
+  background: var(--green-light);
+  color: var(--green);
+}
+
+.menu-toggle {
+  display: none;
+  background: var(--green-light);
+  border: 0;
+  border-radius: 9px;
+  padding: 9px 13px;
+  font-size: 22px;
+  color: var(--green);
+}
+
+/* Hero */
+
+.hero {
+  padding: 85px 0 75px;
+  background:
+    radial-gradient(circle at 10% 20%, #d9f0df 0, transparent 28%),
+    linear-gradient(135deg, #f1faf3, #ffffff 65%);
+  overflow: hidden;
+}
+
+.hero-content {
+  display: grid;
+  grid-template-columns: 1.15fr .85fr;
+  align-items: center;
+  gap: 45px;
+}
+
+.badge {
   display: inline-block;
+  background: #e3f4e8;
+  color: var(--green);
+  border-radius: 30px;
+  padding: 7px 15px;
+  font-size: 13px;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.hero h1 {
+  font-size: clamp(30px, 4vw, 48px);
+  line-height: 1.5;
+  margin-bottom: 16px;
+  color: #173e2b;
+}
+
+.hero h1 span {
+  color: var(--green);
+}
+
+.hero p {
+  color: var(--muted);
+  font-size: 17px;
+  max-width: 540px;
+  margin-bottom: 27px;
+}
+
+.search-box {
+  display: flex;
   background: white;
-  color: #147b40;
-  padding: 13px 25px;
-  margin-top: 18px;
-  border-radius: 8px;
-  text-decoration: none;
+  padding: 8px;
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow);
+  border-radius: 14px;
+  max-width: 590px;
+  gap: 8px;
+}
+
+.search-box input {
+  flex: 1;
+  min-width: 0;
+  border: 0;
+  outline: none;
+  padding: 12px;
+  font-size: 15px;
+}
+
+.hero-note {
+  margin-top: 15px;
+  color: var(--muted);
+  font-size: 12px;
+}
+
+.hero-art {
+  min-height: 330px;
+  border-radius: 35px;
+  background: linear-gradient(145deg, #087d43, #20a65e);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 20px 45px #087d432b;
+}
+
+.hero-art::before,
+.hero-art::after {
+  content: "";
+  position: absolute;
+  border: 1px solid #ffffff30;
+  border-radius: 50%;
+}
+
+.hero-art::before {
+  width: 300px;
+  height: 300px;
+}
+
+.hero-art::after {
+  width: 220px;
+  height: 220px;
+}
+
+.art-content {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  color: white;
+}
+
+.art-symbol {
+  font-size: 100px;
+  line-height: 1.5;
+}
+
+.art-content h3 {
+  font-size: 23px;
+}
+
+.art-content p {
+  color: #e2f6e9;
+  margin: 5px 0 0;
+  font-size: 14px;
+}
+
+/* General sections */
+
+section {
+  padding: 70px 0;
+}
+
+.section-heading {
+  text-align: center;
+  margin-bottom: 35px;
+}
+
+.section-heading h2 {
+  font-size: 29px;
+  color: var(--green-dark);
+  margin-bottom: 8px;
+}
+
+.section-heading p {
+  color: var(--muted);
+  font-size: 14px;
+}
+
+/* Services */
+
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 17px;
+}
+
+.service-card {
+  background: white;
+  border: 1px solid var(--border);
+  padding: 24px 15px;
+  border-radius: 17px;
+  text-align: center;
+  transition: .25s;
+  cursor: pointer;
+}
+
+.service-card:hover {
+  transform: translateY(-5px);
+  border-color: #a8d9b8;
+  box-shadow: var(--shadow);
+}
+
+.service-icon {
+  width: 60px;
+  height: 60px;
+  border-radius: 18px;
+  background: var(--green-light);
+  display: grid;
+  place-items: center;
+  margin: 0 auto 13px;
+  font-size: 29px;
+}
+
+.service-card h3 {
+  font-size: 16px;
+  margin-bottom: 5px;
+}
+
+.service-card p {
+  color: var(--muted);
+  font-size: 12px;
+}
+
+/* How it works */
+
+.how {
+  background: #edf7f0;
+}
+
+.steps {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.step {
+  background: white;
+  padding: 27px 22px;
+  border-radius: 17px;
+  text-align: center;
+}
+
+.step-number {
+  width: 48px;
+  height: 48px;
+  background: var(--green);
+  color: white;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  margin: 0 auto 14px;
+  font-size: 20px;
   font-weight: bold;
 }
 
-footer {
-  background: #163d2b;
-  color: white;
-  text-align: center;
-  padding: 25px;
-  margin-top: 40px;
+.step h3 {
+  font-size: 17px;
+  margin-bottom: 7px;
 }
 
-@media(max-width:600px) {
-  header {
-    flex-direction: column;
-    gap: 15px;
+.step p {
+  font-size: 13px;
+  color: var(--muted);
+}
+
+/* Provinces */
+
+.provinces-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 13px;
+}
+
+.province {
+  background: white;
+  border: 1px solid var(--border);
+  padding: 16px;
+  text-align: center;
+  border-radius: 12px;
+  font-weight: bold;
+  transition: .2s;
+}
+
+.province:hover {
+  color: var(--green);
+  border-color: #9bd2ac;
+  background: #f2faf4;
+}
+
+/* Provider call */
+
+.provider-area {
+  padding: 0 0 75px;
+}
+
+.provider-box {
+  background: linear-gradient(120deg, #075d34, #10944f);
+  color: white;
+  padding: 45px;
+  border-radius: 23px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 25px;
+}
+
+.provider-box h2 {
+  font-size: 27px;
+  margin-bottom: 8px;
+}
+
+.provider-box p {
+  color: #e1f4e7;
+  font-size: 14px;
+}
+
+.provider-box .btn {
+  background: white;
+  color: var(--green);
+  white-space: nowrap;
+}
+
+/* Footer */
+
+footer {
+  background: #143c2a;
+  color: white;
+  padding: 45px 0 20px;
+}
+
+.footer-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr;
+  gap: 35px;
+  padding-bottom: 30px;
+}
+
+footer h3 {
+  margin-bottom: 13px;
+}
+
+footer p, footer a {
+  color: #c6d9cd;
+  font-size: 13px;
+}
+
+.footer-links {
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+}
+
+.copyright {
+  border-top: 1px solid #ffffff20;
+  padding-top: 17px;
+  text-align: center;
+  color: #c6d9cd;
+  font-size: 12px;
+}
+
+/* Syrian flag: green replaces red */
+
+.syrian-flag {
+  display: inline-flex;
+  flex-direction: column;
+  width: 32px;
+  height: 21px;
+  overflow: hidden;
+  border-radius: 3px;
+  vertical-align: middle;
+  box-shadow: 0 1px 3px #0002;
+}
+
+.flag-green, .flag-white, .flag-black {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  font-size: 9px;
+  line-height: 1;
+}
+
+.flag-green { background: #087d43; }
+.flag-white { background: white; color: #d62929; }
+.flag-black { background: #171717; }
+
+/* Search feedback */
+
+.no-results {
+  display: none;
+  text-align: center;
+  color: var(--muted);
+  padding: 20px;
+  grid-column: 1 / -1;
+}
+
+/* Responsive */
+
+@media (max-width: 850px) {
+  nav {
+    gap: 13px;
   }
+
+  .hero-content {
+    grid-template-columns: 1fr;
+  }
+
+  .hero-art {
+    min-height: 240px;
+  }
+
+  .services-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .provinces-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .header-inner {
+    min-height: 68px;
+    flex-wrap: wrap;
+  }
+
+  .logo {
+    font-size: 23px;
+  }
+
+  .menu-toggle {
+    display: block;
+  }
+
+  nav {
+    display: none;
+    width: 100%;
+    flex-direction: column;
+    align-items: stretch;
+    padding: 10px 0 17px;
+    gap: 0;
+  }
+
+  nav.open {
+    display: flex;
+  }
+
+  nav a {
+    padding: 10px;
+    border-top: 1px solid var(--border);
+  }
+
+  .header-actions .btn-light {
+    display: none;
+  }
+
+  .hero {
+    padding: 55px 0;
+  }
+
   .hero h1 {
-    font-size: 28px;
+    font-size: 30px;
+  }
+
+  .hero p {
+    font-size: 14px;
+  }
+
+  .search-box {
+    flex-direction: column;
+  }
+
+  .search-box .btn {
+    width: 100%;
+  }
+
+  section {
+    padding: 52px 0;
+  }
+
+  .section-heading h2 {
+    font-size: 24px;
+  }
+
+  .steps {
+    grid-template-columns: 1fr;
+  }
+
+  .provinces-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .provider-box {
+    padding: 30px 20px;
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .provider-box .btn {
+    width: 100%;
+  }
+
+  .footer-grid {
+    grid-template-columns: 1fr;
+    gap: 22px;
   }
 }
 </style>
@@ -164,72 +629,318 @@ footer {
 <body>
 
 <header>
-  <div class="logo">خدماتك 🇸🇾</div>
-  <nav>
-    <a href="#services">الخدمات</a>
-    <a href="#provinces">المحافظات</a>
-    <a href="#providers">مقدمو الخدمات</a>
-  </nav>
+  <div class="container header-inner">
+
+    <a href="#" class="logo">
+      <span class="logo-icon">⌂</span>
+      خدماتك
+      <span class="syrian-flag" aria-label="علم سوريا">
+        <span class="flag-green"></span>
+        <span class="flag-white">★ ★ ★</span>
+        <span class="flag-black"></span>
+      </span>
+    </a>
+
+    <button class="menu-toggle" id="menuToggle" aria-label="القائمة">☰</button>
+
+    <nav id="mainNav">
+      <a href="#">الرئيسية</a>
+      <a href="#services">الخدمات</a>
+      <a href="#how">كيف تعمل المنصة؟</a>
+      <a href="#provinces">المحافظات</a>
+      <a href="#providers">مقدمو الخدمات</a>
+    </nav>
+
+    <div class="header-actions">
+      <a href="#customer" class="btn btn-light">دخول العملاء</a>
+      <a href="#providers" class="btn btn-primary">انضم إلينا</a>
+    </div>
+
+  </div>
 </header>
 
-<div class="hero">
-  <h1>خدماتك... كل ما تحتاجه في مكان واحد</h1>
-  <p>منصتك السورية للعثور على أفضل الخدمات بالقرب منك</p>
+<main>
 
-  <div class="search">
-    <input type="text" placeholder="ما الخدمة التي تبحث عنها؟">
-    <button onclick="alert('سيتم تفعيل البحث في المرحلة القادمة')">ابحث</button>
+<div class="hero">
+  <div class="container hero-content">
+
+    <div>
+      <span class="badge">منصة سورية تجمع الخدمات في مكان واحد</span>
+
+      <h1>
+        كل ما تحتاجه من خدمات،
+        <span>تجده في خدماتك</span>
+      </h1>
+
+      <p>
+        اكتشف مقدمي الخدمات بالقرب منك، وقارن الخيارات،
+        وتواصل مع الشخص المناسب لإنجاز ما تحتاجه بسهولة.
+      </p>
+
+      <form class="search-box" id="searchForm">
+        <input
+          type="search"
+          id="serviceSearch"
+          placeholder="ابحث عن خدمة مثل الكهرباء أو الصيانة..."
+          aria-label="ابحث عن خدمة"
+        >
+        <button type="submit" class="btn btn-primary">ابحث الآن</button>
+      </form>
+
+      <div class="hero-note">
+        نعمل على جمع الخدمات في جميع المحافظات السورية.
+      </div>
+    </div>
+
+    <div class="hero-art">
+      <div class="art-content">
+        <div class="art-symbol">🏡</div>
+        <h3>خدماتك أقرب إليك</h3>
+        <p>خدمات متنوعة في منصة واحدة</p>
+      </div>
+    </div>
+
   </div>
 </div>
 
 <section id="services">
-  <h2>اكتشف الخدمات</h2>
+  <div class="container">
 
-  <div class="grid">
-    <div class="card"><span>🔧</span>صيانة وإصلاح</div>
-    <div class="card"><span>⚡</span>كهرباء</div>
-    <div class="card"><span>🚰</span>سباكة</div>
-    <div class="card"><span>🏠</span>عقارات</div>
-    <div class="card"><span>🚗</span>نقل ومواصلات</div>
-    <div class="card"><span>💻</span>خدمات تقنية</div>
-    <div class="card"><span>📚</span>تعليم وتدريب</div>
-    <div class="card"><span>🧹</span>تنظيف</div>
+    <div class="section-heading">
+      <h2>اكتشف الخدمات</h2>
+      <p>اختر المجال الذي تبحث عنه وابدأ رحلتك</p>
+    </div>
+
+    <div class="services-grid" id="servicesGrid">
+
+      <div class="service-card" data-name="صيانة وإصلاح">
+        <div class="service-icon">🔧</div>
+        <h3>صيانة وإصلاح</h3>
+        <p>أعمال الصيانة المنزلية</p>
+      </div>
+
+      <div class="service-card" data-name="كهرباء">
+        <div class="service-icon">⚡</div>
+        <h3>كهرباء</h3>
+        <p>خدمات الكهرباء والتركيب</p>
+      </div>
+
+      <div class="service-card" data-name="سباكة">
+        <div class="service-icon">🚰</div>
+        <h3>سباكة</h3>
+        <p>تمديدات وإصلاحات المياه</p>
+      </div>
+
+      <div class="service-card" data-name="عقارات">
+        <div class="service-icon">🏠</div>
+        <h3>عقارات</h3>
+        <p>بيع وتأجير وخدمات عقارية</p>
+      </div>
+
+      <div class="service-card" data-name="نقل ومواصلات">
+        <div class="service-icon">🚚</div>
+        <h3>نقل ومواصلات</h3>
+        <p>نقل الأفراد والبضائع</p>
+      </div>
+
+      <div class="service-card" data-name="خدمات تقنية">
+        <div class="service-icon">💻</div>
+        <h3>خدمات تقنية</h3>
+        <p>تقنية ومواقع وتصميم</p>
+      </div>
+
+      <div class="service-card" data-name="تعليم وتدريب">
+        <div class="service-icon">📚</div>
+        <h3>تعليم وتدريب</h3>
+        <p>دروس ودورات تعليمية</p>
+      </div>
+
+      <div class="service-card" data-name="تنظيف">
+        <div class="service-icon">🧹</div>
+        <h3>تنظيف</h3>
+        <p>تنظيف المنازل والمكاتب</p>
+      </div>
+
+      <div class="no-results" id="noResults">
+        لا توجد خدمة مطابقة لبحثك في هذه القائمة.
+      </div>
+
+    </div>
   </div>
 </section>
 
-<section id="provinces" class="provinces">
-  <h2>خدماتك في جميع المحافظات السورية</h2>
+<section class="how" id="how">
+  <div class="container">
 
-  <div class="grid">
-    <div class="card">دمشق</div>
-    <div class="card">ريف دمشق</div>
-    <div class="card">حلب</div>
-    <div class="card">حمص</div>
-    <div class="card">حماة</div>
-    <div class="card">اللاذقية</div>
-    <div class="card">طرطوس</div>
-    <div class="card">إدلب</div>
-    <div class="card">درعا</div>
-    <div class="card">السويداء</div>
-    <div class="card">القنيطرة</div>
-    <div class="card">دير الزور</div>
-    <div class="card">الرقة</div>
-    <div class="card">الحسكة</div>
+    <div class="section-heading">
+      <h2>كيف تعمل خدماتك؟</h2>
+      <p>ثلاث خطوات بسيطة للوصول إلى الخدمة المناسبة</p>
+    </div>
+
+    <div class="steps">
+
+      <div class="step">
+        <div class="step-number">1</div>
+        <h3>ابحث عن الخدمة</h3>
+        <p>اختر نوع الخدمة التي تحتاجها والموقع المناسب لك.</p>
+      </div>
+
+      <div class="step">
+        <div class="step-number">2</div>
+        <h3>اكتشف مقدمي الخدمات</h3>
+        <p>تعرّف على مقدمي الخدمات واختر الأنسب لاحتياجاتك.</p>
+      </div>
+
+      <div class="step">
+        <div class="step-number">3</div>
+        <h3>تواصل واطلب خدمتك</h3>
+        <p>تواصل مع مقدم الخدمة واتفق معه على التفاصيل.</p>
+      </div>
+
+    </div>
   </div>
 </section>
 
-<section id="providers">
-  <div class="cta">
-    <h2>هل تقدم خدمة؟</h2>
-    <p>انضم إلى خدماتك واعرض خدماتك لآلاف العملاء مستقبلاً.</p>
-    <a href="#" class="btn">انضم كمقدم خدمة</a>
+<section id="provinces">
+  <div class="container">
+
+    <div class="section-heading">
+      <h2>خدماتك في جميع المحافظات السورية</h2>
+      <p>طموحنا أن تصل المنصة إلى كل مدينة وبلدة في سوريا</p>
+    </div>
+
+    <div class="provinces-grid">
+      <div class="province">دمشق</div>
+      <div class="province">ريف دمشق</div>
+      <div class="province">حلب</div>
+      <div class="province">حمص</div>
+      <div class="province">حماة</div>
+      <div class="province">اللاذقية</div>
+      <div class="province">طرطوس</div>
+      <div class="province">إدلب</div>
+      <div class="province">درعا</div>
+      <div class="province">السويداء</div>
+      <div class="province">القنيطرة</div>
+      <div class="province">دير الزور</div>
+      <div class="province">الرقة</div>
+      <div class="province">الحسكة</div>
+    </div>
+
   </div>
 </section>
+
+<section id="customer">
+  <div class="container">
+    <div class="section-heading">
+      <h2>أهلاً بك في خدماتك</h2>
+      <p>نسعى لتسهيل وصولك إلى الخدمات التي تحتاجها.</p>
+      <a href="#services" class="btn btn-primary">اكتشف الخدمات</a>
+    </div>
+  </div>
+</section>
+
+<div class="provider-area" id="providers">
+  <div class="container">
+
+    <div class="provider-box">
+      <div>
+        <h2>هل تقدم خدمة؟</h2>
+        <p>
+          انضم إلى مجتمع مقدمي الخدمات في خدماتك،
+          وابدأ بتعريف العملاء بخدماتك.
+        </p>
+      </div>
+
+      <a href="#register" class="btn">التسجيل كمقدم خدمة ←</a>
+    </div>
+
+  </div>
+</div>
+
+</main>
 
 <footer>
-  <p>خدماتك © 2026 - منصتك السورية للخدمات</p>
-  <p>معاً نبني مستقبلاً أفضل للخدمات في سوريا 🇸🇾</p>
+  <div class="container">
+
+    <div class="footer-grid">
+
+      <div>
+        <h3>خدماتك</h3>
+        <p>
+          منصة سورية تهدف إلى جمع الخدمات ومقدميها
+          في مكان واحد، وتسهيل الوصول إليها في جميع المحافظات.
+        </p>
+      </div>
+
+      <div>
+        <h3>روابط مهمة</h3>
+        <div class="footer-links">
+          <a href="#services">الخدمات</a>
+          <a href="#provinces">المحافظات</a>
+          <a href="#providers">مقدمو الخدمات</a>
+        </div>
+      </div>
+
+      <div>
+        <h3>حسابك</h3>
+        <div class="footer-links">
+          <a href="#customer">العملاء</a>
+          <a href="#register">التسجيل كمقدم خدمة</a>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="copyright">
+      خدماتك © 2026 - منصتك السورية للخدمات
+      <br>
+      معاً نبني مستقبلاً أفضل للخدمات في سوريا
+    </div>
+
+  </div>
 </footer>
 
+<script>
+const menuToggle = document.getElementById("menuToggle");
+const mainNav = document.getElementById("mainNav");
+
+menuToggle.addEventListener("click", () => {
+  mainNav.classList.toggle("open");
+});
+
+mainNav.querySelectorAll("a").forEach(link => {
+  link.addEventListener("click", () => {
+    mainNav.classList.remove("open");
+  });
+});
+
+const searchForm = document.getElementById("searchForm");
+const searchInput = document.getElementById("serviceSearch");
+const serviceCards = document.querySelectorAll(".service-card");
+const noResults = document.getElementById("noResults");
+
+searchForm.addEventListener("submit", function(event) {
+  event.preventDefault();
+
+  const query = searchInput.value.trim().toLowerCase();
+  let found = 0;
+
+  serviceCards.forEach(card => {
+    const name = card.dataset.name.toLowerCase();
+    const visible = !query || name.includes(query);
+
+    card.style.display = visible ? "block" : "none";
+
+    if (visible) found++;
+  });
+
+  noResults.style.display = found === 0 ? "block" : "none";
+
+  document.getElementById("services").scrollIntoView({
+    behavior: "smooth"
+  });
+});
+</script>
+
 </body>
-      </html>
+        </html>
