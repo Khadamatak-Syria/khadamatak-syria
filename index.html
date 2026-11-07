@@ -8,6 +8,266 @@
 <title>خدماتك | منصتك السورية للخدمات</title>
 
 <style>
+  /* ==================================
+   KHADAMATAK - PREMIUM VISUAL UPDATE
+================================== */
+
+:root {
+  --green: #08764a;
+  --green-dark: #06452f;
+  --green-light: #e8f3ec;
+  --text: #18392b;
+  --muted: #718078;
+  --bg: #faf9f5;
+  --border: #e8e9df;
+  --shadow: 0 12px 35px rgba(12, 65, 42, .09);
+}
+
+/* Header */
+header {
+  background: rgba(6, 55, 38, .97);
+  border-bottom: 1px solid rgba(255,255,255,.12);
+  backdrop-filter: blur(14px);
+}
+
+.header-inner {
+  min-height: 82px;
+}
+
+.logo {
+  color: #fff;
+}
+
+.logo-icon {
+  background: rgba(255,255,255,.13);
+  color: #fff;
+  border: 1px solid rgba(255,255,255,.15);
+}
+
+nav a {
+  color: #e5f1e9;
+  font-weight: 600;
+}
+
+nav a:hover {
+  color: #b8e7c9;
+}
+
+.menu-toggle {
+  background: rgba(255,255,255,.13);
+  color: white;
+}
+
+.header-actions .btn-light {
+  background: rgba(255,255,255,.12);
+  color: white;
+}
+
+/* Hero */
+.hero {
+  position: relative;
+  padding: 95px 0 85px;
+  background:
+    radial-gradient(circle at 5% 15%, #dceee1 0, transparent 30%),
+    linear-gradient(120deg, #f7f8f1, #fff 60%, #edf5ed);
+}
+
+.hero h1 {
+  color: #123b2b;
+  font-weight: 900;
+  letter-spacing: -.7px;
+}
+
+.hero h1 span {
+  color: #08764a;
+}
+
+.badge {
+  background: #e3f1e7;
+  border: 1px solid #cde4d3;
+}
+
+.search-box {
+  border-radius: 18px;
+  padding: 9px;
+  border-color: #e0e9e1;
+  box-shadow: 0 14px 35px rgba(20,70,43,.10);
+}
+
+.search-box input {
+  min-height: 48px;
+}
+
+.search-box .btn {
+  min-height: 48px;
+  border-radius: 12px;
+}
+
+/* Hero visual */
+.hero-art {
+  min-height: 365px;
+  border-radius: 30px;
+  background:
+    linear-gradient(145deg, rgba(4,55,36,.35), rgba(5,75,48,.9)),
+    linear-gradient(135deg, #176a48, #0a422f);
+  box-shadow: 0 24px 55px rgba(6,75,45,.2);
+}
+
+.art-symbol {
+  font-size: 110px;
+}
+
+/* Sections */
+section {
+  padding: 82px 0;
+}
+
+.section-heading h2 {
+  font-size: clamp(25px, 3vw, 33px);
+  font-weight: 900;
+  color: #075538;
+}
+
+.section-heading p {
+  font-size: 15px;
+}
+
+/* Service cards */
+.service-card {
+  border-radius: 20px;
+  padding: 27px 17px;
+  box-shadow: 0 5px 20px rgba(20,70,43,.035);
+  transition: transform .25s ease, box-shadow .25s ease;
+}
+
+.service-card:hover {
+  transform: translateY(-7px);
+  box-shadow: 0 16px 35px rgba(20,70,43,.12);
+}
+
+.service-icon {
+  border-radius: 19px;
+  background: linear-gradient(145deg, #e3f2e7, #f2f8f2);
+}
+
+/* How it works */
+.how {
+  background: linear-gradient(135deg, #edf5ed, #f7f8f2);
+}
+
+.step {
+  border: 1px solid #e5eee5;
+  border-radius: 21px;
+  box-shadow: 0 8px 25px rgba(20,70,43,.045);
+  transition: transform .25s ease;
+}
+
+.step:hover {
+  transform: translateY(-5px);
+}
+
+/* Provinces */
+.province {
+  border-radius: 15px;
+  padding: 19px 12px;
+  box-shadow: 0 4px 16px rgba(20,70,43,.04);
+  transition: .25s ease;
+}
+
+.province:hover {
+  transform: translateY(-4px);
+  background: #eaf5ec;
+}
+
+/* Provider banner */
+.provider-box {
+  background: linear-gradient(115deg, #063e2b, #08764a, #15915b);
+  border-radius: 27px;
+  box-shadow: 0 20px 45px rgba(6,75,45,.17);
+  padding: 52px;
+}
+
+.provider-box .btn {
+  border-radius: 13px;
+  min-height: 49px;
+}
+
+/* Footer */
+footer {
+  background: #082f23;
+}
+
+/* Syrian flag stars */
+.flag-white {
+  color: #087d43;
+}
+
+/* Touch and accessibility */
+button, a, .service-card, .province {
+  -webkit-tap-highlight-color: transparent;
+}
+
+.btn,
+.menu-toggle {
+  min-height: 44px;
+}
+
+.btn:active,
+.service-card:active,
+.province:active {
+  transform: scale(.98);
+}
+
+/* Mobile refinements */
+@media (max-width: 600px) {
+  header {
+    background: #06452f;
+  }
+
+  nav {
+    background: #06452f;
+  }
+
+  nav a {
+    color: white;
+    padding: 13px 10px;
+  }
+
+  .hero {
+    padding: 55px 0 45px;
+  }
+
+  .hero-art {
+    min-height: 225px;
+    border-radius: 22px;
+  }
+
+  .art-symbol {
+    font-size: 75px;
+  }
+
+  section {
+    padding: 58px 0;
+  }
+
+  .service-card {
+    padding: 21px 10px;
+  }
+
+  .provider-box {
+    padding: 30px 20px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    transition-duration: .01ms !important;
+    animation-duration: .01ms !important;
+  }
+}
   button,
 a,
 .btn,
