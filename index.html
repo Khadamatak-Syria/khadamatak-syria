@@ -877,7 +877,7 @@ footer p, footer a {
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
 <script>
-const SUPABASE_URL = "https://pabzzoxfqxhkdjhimkla.supabase.co";
+ const SUPABASE_URL = "https://pabzzoxfqxhkdjhimkla.supabase.co";
 
 const SUPABASE_ANON_KEY = "sb_publishable_wDr3qsA3fDiXdgV9kYoLKQ_SOVuNtFa";
 
@@ -890,43 +890,191 @@ const supabaseClient = window.supabase.createClient(
 const menuToggle = document.getElementById("menuToggle");
 const mainNav = document.getElementById("mainNav");
 
-menuToggle.addEventListener("click", () => {
-  mainNav.classList.toggle("open");
-});
-
-mainNav.querySelectorAll("a").forEach(link => {
-  link.addEventListener("click", () => {
-    mainNav.classList.remove("open");
+if (menuToggle && mainNav) {
+  menuToggle.addEventListener("click", () => {
+    mainNav.classList.toggle("open");
   });
-});
 
-// البحث عن الخدمات
+  mainNav.querySelectorAll("a").forEach(link => {
+    link.addEventListener("click", () => {
+      mainNav.classList.remove("open");
+    });
+  });
+}
+
+// التصنيفات
+const servicesGrid = document.getElementById("servicesGrid");
 const searchForm = document.getElementById("searchForm");
 const searchInput = document.getElementById("serviceSearch");
-const serviceCards = document.querySelectorAll(".service-card");
-const noResults = document.getElementById("noResults");
 
-searchForm.addEventListener("submit", function(event) {
-  event.preventDefault();
+let allCategories = [];
+let currentParent = null;
 
-  const query = searchInput.value.trim().toLowerCase();
-  let found = 0;
+const categoryIcons = {
+  construction: "🏗️",
+  electricity: "⚡",
+  plumbing: "🚰",
+  maintenance: "🔧",
+  education: "📚",
+  technology: "💻",
+  transport: "🚚",
+  cleaning: "🧹",
+  beauty: "💇",
+  health: "🩺",
+  delivery: "📦",
+  professional: "💼"
+};
 
-  serviceCards.forEach(card => {
-    const name = card.dataset.name.toLowerCase();
-    const visible = !query || name.includes(query);
+function showMessage(message) {
+  servicesGrid.innerHTML = "";
 
-    card.style.display = visible ? "block" : "none";
+  const box = document.createElement("div");
+  box.className = "no-results";
+  box.style.display = "block";
+  box.textContent = message;
 
-    if (visible) found++;
+  servicesGrid.appendChild(box);
+}
+
+function createCategoryCard(category) {
+  const card = document.createElement("button");
+  card.type = "button";
+  card.className = "service-card";
+
+  const icon = document.createElement("div");
+  icon.className = "service-icon";
+  icon.textContent =
+    category.icon ||
+    categoryIcons[category.slug] ||
+    "📌";
+
+  const title = document.createElement("h3");
+  title.textContent = category.name_ar;
+
+  const description = document.createElement("p");
+  description.textContent =
+    category.description || "اكتشف الخدمات المتاحة";
+
+  card.append(icon, title, description);
+
+  card.addEventListener("click", () => {
+    if (!category.parent_id) {
+      currentParent = category;
+      renderSubcategories(category);
+    }
   });
 
-  noResults.style.display = found === 0 ? "block" : "none";
+  return card;
+}
 
-  document.getElementById("services").scrollIntoView({
-    behavior: "smooth"
+function renderCategories(categories) {
+  servicesGrid.innerHTML = "";
+
+  if (categories.length === 0) {
+    showMessage("لا توجد تصنيفات مطابقة.");
+    return;
+  }
+
+  categories.forEach(category => {
+    servicesGrid.appendChild(createCategoryCard(category));
   });
-});
+}
+
+function renderSubcategories(parent) {
+  const children = allCategories.filter(
+    category => category.parent_id === parent.id
+  );
+
+  servicesGrid.innerHTML = "";
+
+  const backButton = document.createElement("button");
+  backButton.type = "button";
+  backButton.className = "category-back";
+  backButton.textContent = "← العودة إلى جميع التصنيفات";
+
+  backButton.addEventListener("click", () => {
+    currentParent = null;
+    renderCategories(
+      allCategories.filter(category => !category.parent_id)
+    );
+  });
+
+  servicesGrid.appendChild(backButton);
+
+  const heading = document.createElement("h3");
+  heading.textContent = parent.name_ar;
+  heading.style.gridColumn = "1 / -1";
+  servicesGrid.appendChild(heading);
+
+  if (children.length === 0) {
+    showMessage("لا توجد تصنيفات فرعية حالياً.");
+    return;
+  }
+
+  children.forEach(category => {
+    servicesGrid.appendChild(createCategoryCard(category));
+  });
+}
+
+// تحميل التصنيفات من قاعدة البيانات
+async function loadCategories() {
+  showMessage("جار تحميل التصنيفات...");
+
+  const { data, error } = await supabaseClient
+    .from("categories")
+    .select("id, name_ar, slug, parent_id, sort_order, icon, description")
+    .eq("is_active", true)
+    .order("sort_order", { ascending: true });
+
+  if (error) {
+    console.error("خطأ تحميل التصنيفات:", error);
+    showMessage("تعذر تحميل التصنيفات. يرجى تحديث الصفحة.");
+    return;
+  }
+
+  allCategories = data || [];
+
+  const mainCategories = allCategories.filter(
+    category => !category.parent_id
+  );
+
+  if (mainCategories.length === 0) {
+    showMessage("لا توجد تصنيفات متاحة حالياً.");
+    return;
+  }
+
+  renderCategories(mainCategories);
+}
+
+// البحث
+if (searchForm && searchInput) {
+  searchForm.addEventListener("submit", event => {
+    event.preventDefault();
+
+    const query = searchInput.value.trim().toLowerCase();
+
+    if (!query) {
+      if (currentParent) {
+        renderSubcategories(currentParent);
+      } else {
+        renderCategories(
+          allCategories.filter(category => !category.parent_id)
+        );
+      }
+      return;
+    }
+
+    const results = allCategories.filter(category =>
+      category.name_ar.toLowerCase().includes(query)
+    );
+
+    currentParent = null;
+    renderCategories(results);
+  });
+}
+
+// تشغيل التحميل
+loadCategories();
 </script>
 </body>
         </html>
