@@ -1,1340 +1,190 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ar" dir="rtl">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="theme-color" content="#087d43">
-<meta name="description" content="خدماتك - منصتك السورية لاكتشاف الخدمات ومقدمي الخدمات في جميع المحافظات.">
-<title>خدماتك | منصتك السورية للخدمات</title>
-
-<style>
-  /* ==================================
-   KHADAMATAK - PREMIUM VISUAL UPDATE
-================================== */
-
-:root {
-  --green: #08764a;
-  --green-dark: #06452f;
-  --green-light: #e8f3ec;
-  --text: #18392b;
-  --muted: #718078;
-  --bg: #faf9f5;
-  --border: #e8e9df;
-  --shadow: 0 12px 35px rgba(12, 65, 42, .09);
-}
-
-/* Header */
-header {
-  background: rgba(6, 55, 38, .97);
-  border-bottom: 1px solid rgba(255,255,255,.12);
-  backdrop-filter: blur(14px);
-}
-
-.header-inner {
-  min-height: 82px;
-}
-
-.logo {
-  color: #fff;
-}
-
-.logo-icon {
-  background: rgba(255,255,255,.13);
-  color: #fff;
-  border: 1px solid rgba(255,255,255,.15);
-}
-
-nav a {
-  color: #e5f1e9;
-  font-weight: 600;
-}
-
-nav a:hover {
-  color: #b8e7c9;
-}
-
-.menu-toggle {
-  background: rgba(255,255,255,.13);
-  color: white;
-}
-
-.header-actions .btn-light {
-  background: rgba(255,255,255,.12);
-  color: white;
-}
-
-/* Hero */
-.hero {
-  position: relative;
-  padding: 95px 0 85px;
-  background:
-    radial-gradient(circle at 5% 15%, #dceee1 0, transparent 30%),
-    linear-gradient(120deg, #f7f8f1, #fff 60%, #edf5ed);
-}
-
-.hero h1 {
-  color: #123b2b;
-  font-weight: 900;
-  letter-spacing: -.7px;
-}
-
-.hero h1 span {
-  color: #08764a;
-}
-
-.badge {
-  background: #e3f1e7;
-  border: 1px solid #cde4d3;
-}
-
-.search-box {
-  border-radius: 18px;
-  padding: 9px;
-  border-color: #e0e9e1;
-  box-shadow: 0 14px 35px rgba(20,70,43,.10);
-}
-
-.search-box input {
-  min-height: 48px;
-}
-
-.search-box .btn {
-  min-height: 48px;
-  border-radius: 12px;
-}
-
-/* Hero visual */
-.hero-art {
-  min-height: 365px;
-  border-radius: 30px;
-  background:
-    linear-gradient(145deg, rgba(4,55,36,.35), rgba(5,75,48,.9)),
-    linear-gradient(135deg, #176a48, #0a422f);
-  box-shadow: 0 24px 55px rgba(6,75,45,.2);
-}
-
-.art-symbol {
-  font-size: 110px;
-}
-
-/* Sections */
-section {
-  padding: 82px 0;
-}
-
-.section-heading h2 {
-  font-size: clamp(25px, 3vw, 33px);
-  font-weight: 900;
-  color: #075538;
-}
-
-.section-heading p {
-  font-size: 15px;
-}
-
-/* Service cards */
-.service-card {
-  border-radius: 20px;
-  padding: 27px 17px;
-  box-shadow: 0 5px 20px rgba(20,70,43,.035);
-  transition: transform .25s ease, box-shadow .25s ease;
-}
-
-.service-card:hover {
-  transform: translateY(-7px);
-  box-shadow: 0 16px 35px rgba(20,70,43,.12);
-}
-
-.service-icon {
-  border-radius: 19px;
-  background: linear-gradient(145deg, #e3f2e7, #f2f8f2);
-}
-
-/* How it works */
-.how {
-  background: linear-gradient(135deg, #edf5ed, #f7f8f2);
-}
-
-.step {
-  border: 1px solid #e5eee5;
-  border-radius: 21px;
-  box-shadow: 0 8px 25px rgba(20,70,43,.045);
-  transition: transform .25s ease;
-}
-
-.step:hover {
-  transform: translateY(-5px);
-}
-
-/* Provinces */
-.province {
-  border-radius: 15px;
-  padding: 19px 12px;
-  box-shadow: 0 4px 16px rgba(20,70,43,.04);
-  transition: .25s ease;
-}
-
-.province:hover {
-  transform: translateY(-4px);
-  background: #eaf5ec;
-}
-
-/* Provider banner */
-.provider-box {
-  background: linear-gradient(115deg, #063e2b, #08764a, #15915b);
-  border-radius: 27px;
-  box-shadow: 0 20px 45px rgba(6,75,45,.17);
-  padding: 52px;
-}
-
-.provider-box .btn {
-  border-radius: 13px;
-  min-height: 49px;
-}
-
-/* Footer */
-footer {
-  background: #082f23;
-}
-
-/* Syrian flag stars */
-.flag-white {
-  color: #087d43;
-}
-
-/* Touch and accessibility */
-button, a, .service-card, .province {
-  -webkit-tap-highlight-color: transparent;
-}
-
-.btn,
-.menu-toggle {
-  min-height: 44px;
-}
-
-.btn:active,
-.service-card:active,
-.province:active {
-  transform: scale(.98);
-}
-
-/* Mobile refinements */
-@media (max-width: 600px) {
-  header {
-    background: #06452f;
-  }
-
-  nav {
-    background: #06452f;
-  }
-
-  nav a {
-    color: white;
-    padding: 13px 10px;
-  }
-
-  .hero {
-    padding: 55px 0 45px;
-  }
-
-  .hero-art {
-    min-height: 225px;
-    border-radius: 22px;
-  }
-
-  .art-symbol {
-    font-size: 75px;
-  }
-
-  section {
-    padding: 58px 0;
-  }
-
-  .service-card {
-    padding: 21px 10px;
-  }
-
-  .provider-box {
-    padding: 30px 20px;
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  *,
-  *::before,
-  *::after {
-    scroll-behavior: auto !important;
-    transition-duration: .01ms !important;
-    animation-duration: .01ms !important;
-  }
-  }
-  button,
-a,
-.btn,
-.service-card,
-.province,
-.menu-toggle {
-  -webkit-user-select: none;
-  user-select: none;
-  -webkit-tap-highlight-color: transparent;
-  cursor: pointer;
-}
-
-input,
-textarea {
-  -webkit-user-select: text;
-  user-select: text;
-}
-:root {
-  --green: #087d43;
-  --green-dark: #075b34;
-  --green-light: #eaf6ee;
-  --text: #19372a;
-  --muted: #718078;
-  --white: #fff;
-  --bg: #f7faf8;
-  --border: #e6eee8;
-  --shadow: 0 8px 30px rgba(20, 70, 43, .07);
-}
-
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
-
-html {
-  scroll-behavior: smooth;
-}
-
-body {
-  font-family: Tahoma, Arial, sans-serif;
-  background: var(--bg);
-  color: var(--text);
-  line-height: 1.8;
-}
-
-a {
-  text-decoration: none;
-  color: inherit;
-}
-
-button, input {
-  font-family: inherit;
-}
-
-.container {
-  width: min(1160px, 92%);
-  margin: auto;
-}
-
-/* Header */
-
-header {
-  background: rgba(255,255,255,.96);
-  border-bottom: 1px solid var(--border);
-  position: sticky;
-  top: 0;
-  z-index: 100;
-}
-
-.header-inner {
-  min-height: 78px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 20px;
-}
-
-.logo {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  color: var(--green);
-  font-size: 27px;
-  font-weight: bold;
-}
-
-.logo-icon {
-  width: 43px;
-  height: 43px;
-  border-radius: 13px;
-  background: var(--green-light);
-  display: grid;
-  place-items: center;
-  font-size: 23px;
-}
-
-nav {
-  display: flex;
-  align-items: center;
-  gap: 25px;
-}
-
-nav a {
-  color: #40594b;
-  font-size: 14px;
-  transition: .2s;
-}
-
-nav a:hover {
-  color: var(--green);
-}
-
-.header-actions {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-
-.btn {
-  border: 0;
-  border-radius: 10px;
-  padding: 11px 20px;
-  font-size: 14px;
-  font-weight: bold;
-  cursor: pointer;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  transition: .2s;
-}
-
-.btn-primary {
-  background: var(--green);
-  color: white;
-}
-
-.btn-primary:hover {
-  background: var(--green-dark);
-  transform: translateY(-2px);
-}
-
-.btn-light {
-  background: var(--green-light);
-  color: var(--green);
-}
-
-.menu-toggle {
-  display: none;
-  background: var(--green-light);
-  border: 0;
-  border-radius: 9px;
-  padding: 9px 13px;
-  font-size: 22px;
-  color: var(--green);
-}
-
-/* Hero */
-
-.hero {
-  padding: 85px 0 75px;
-  background:
-    radial-gradient(circle at 10% 20%, #d9f0df 0, transparent 28%),
-    linear-gradient(135deg, #f1faf3, #ffffff 65%);
-  overflow: hidden;
-}
-
-.hero-content {
-  display: grid;
-  grid-template-columns: 1.15fr .85fr;
-  align-items: center;
-  gap: 45px;
-}
-
-.badge {
-  display: inline-block;
-  background: #e3f4e8;
-  color: var(--green);
-  border-radius: 30px;
-  padding: 7px 15px;
-  font-size: 13px;
-  font-weight: bold;
-  margin-bottom: 20px;
-}
-
-.hero h1 {
-  font-size: clamp(30px, 4vw, 48px);
-  line-height: 1.5;
-  margin-bottom: 16px;
-  color: #173e2b;
-}
-
-.hero h1 span {
-  color: var(--green);
-}
-
-.hero p {
-  color: var(--muted);
-  font-size: 17px;
-  max-width: 540px;
-  margin-bottom: 27px;
-}
-
-.search-box {
-  display: flex;
-  background: white;
-  padding: 8px;
-  border: 1px solid var(--border);
-  box-shadow: var(--shadow);
-  border-radius: 14px;
-  max-width: 590px;
-  gap: 8px;
-}
-
-.search-box input {
-  flex: 1;
-  min-width: 0;
-  border: 0;
-  outline: none;
-  padding: 12px;
-  font-size: 15px;
-}
-
-.hero-note {
-  margin-top: 15px;
-  color: var(--muted);
-  font-size: 12px;
-}
-
-.hero-art {
-  min-height: 330px;
-  border-radius: 35px;
-  background: linear-gradient(145deg, #087d43, #20a65e);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  position: relative;
-  overflow: hidden;
-  box-shadow: 0 20px 45px #087d432b;
-}
-
-.hero-art::before,
-.hero-art::after {
-  content: "";
-  position: absolute;
-  border: 1px solid #ffffff30;
-  border-radius: 50%;
-}
-
-.hero-art::before {
-  width: 300px;
-  height: 300px;
-}
-
-.hero-art::after {
-  width: 220px;
-  height: 220px;
-}
-
-.art-content {
-  position: relative;
-  z-index: 1;
-  text-align: center;
-  color: white;
-}
-
-.art-symbol {
-  font-size: 100px;
-  line-height: 1.5;
-}
-
-.art-content h3 {
-  font-size: 23px;
-}
-
-.art-content p {
-  color: #e2f6e9;
-  margin: 5px 0 0;
-  font-size: 14px;
-}
-
-/* General sections */
-
-section {
-  padding: 70px 0;
-}
-
-.section-heading {
-  text-align: center;
-  margin-bottom: 35px;
-}
-
-.section-heading h2 {
-  font-size: 29px;
-  color: var(--green-dark);
-  margin-bottom: 8px;
-}
-
-.section-heading p {
-  color: var(--muted);
-  font-size: 14px;
-}
-
-/* Services */
-
-.services-grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 17px;
-}
-
-.service-card {
-  background: white;
-  border: 1px solid var(--border);
-  padding: 24px 15px;
-  border-radius: 17px;
-  text-align: center;
-  transition: .25s;
-  cursor: pointer;
-}
-
-.service-card:hover {
-  transform: translateY(-5px);
-  border-color: #a8d9b8;
-  box-shadow: var(--shadow);
-}
-
-.service-icon {
-  width: 60px;
-  height: 60px;
-  border-radius: 18px;
-  background: var(--green-light);
-  display: grid;
-  place-items: center;
-  margin: 0 auto 13px;
-  font-size: 29px;
-}
-
-.service-card h3 {
-  font-size: 16px;
-  margin-bottom: 5px;
-}
-
-.service-card p {
-  color: var(--muted);
-  font-size: 12px;
-}
-
-/* How it works */
-
-.how {
-  background: #edf7f0;
-}
-
-.steps {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 20px;
-}
-
-.step {
-  background: white;
-  padding: 27px 22px;
-  border-radius: 17px;
-  text-align: center;
-}
-
-.step-number {
-  width: 48px;
-  height: 48px;
-  background: var(--green);
-  color: white;
-  border-radius: 50%;
-  display: grid;
-  place-items: center;
-  margin: 0 auto 14px;
-  font-size: 20px;
-  font-weight: bold;
-}
-
-.step h3 {
-  font-size: 17px;
-  margin-bottom: 7px;
-}
-
-.step p {
-  font-size: 13px;
-  color: var(--muted);
-}
-
-/* Provinces */
-
-.provinces-grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 13px;
-}
-
-.province {
-  background: white;
-  border: 1px solid var(--border);
-  padding: 16px;
-  text-align: center;
-  border-radius: 12px;
-  font-weight: bold;
-  transition: .2s;
-}
-
-.province:hover {
-  color: var(--green);
-  border-color: #9bd2ac;
-  background: #f2faf4;
-}
-
-/* Provider call */
-
-.provider-area {
-  padding: 0 0 75px;
-}
-
-.provider-box {
-  background: linear-gradient(120deg, #075d34, #10944f);
-  color: white;
-  padding: 45px;
-  border-radius: 23px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 25px;
-}
-
-.provider-box h2 {
-  font-size: 27px;
-  margin-bottom: 8px;
-}
-
-.provider-box p {
-  color: #e1f4e7;
-  font-size: 14px;
-}
-
-.provider-box .btn {
-  background: white;
-  color: var(--green);
-  white-space: nowrap;
-}
-
-/* Footer */
-
-footer {
-  background: #143c2a;
-  color: white;
-  padding: 45px 0 20px;
-}
-
-.footer-grid {
-  display: grid;
-  grid-template-columns: 2fr 1fr 1fr;
-  gap: 35px;
-  padding-bottom: 30px;
-}
-
-footer h3 {
-  margin-bottom: 13px;
-}
-
-footer p, footer a {
-  color: #c6d9cd;
-  font-size: 13px;
-}
-
-.footer-links {
-  display: flex;
-  flex-direction: column;
-  gap: 9px;
-}
-
-.copyright {
-  border-top: 1px solid #ffffff20;
-  padding-top: 17px;
-  text-align: center;
-  color: #c6d9cd;
-  font-size: 12px;
-}
-
-/* Syrian flag: green replaces red */
-
-.syrian-flag {
-  display: inline-flex;
-  flex-direction: column;
-  width: 32px;
-  height: 21px;
-  overflow: hidden;
-  border-radius: 3px;
-  vertical-align: middle;
-  box-shadow: 0 1px 3px #0002;
-}
-
-.flag-green, .flag-white, .flag-black {
-  flex: 1;
-  display: flex;
-  align-items: center;
-  justify-content: space-evenly;
-  font-size: 9px;
-  line-height: 1;
-}
-
-.flag-green { background: #087d43; }
-.flag-white { background: white; color: #d62929; }
-.flag-black { background: #171717; }
-
-/* Search feedback */
-
-.no-results {
-  display: none;
-  text-align: center;
-  color: var(--muted);
-  padding: 20px;
-  grid-column: 1 / -1;
-}
-
-/* Responsive */
-
-@media (max-width: 850px) {
-  nav {
-    gap: 13px;
-  }
-
-  .hero-content {
-    grid-template-columns: 1fr;
-  }
-
-  .hero-art {
-    min-height: 240px;
-  }
-
-  .services-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-
-  .provinces-grid {
-    grid-template-columns: repeat(3, 1fr);
-  }
-}
-
-@media (max-width: 600px) {
-  .header-inner {
-    min-height: 68px;
-    flex-wrap: wrap;
-  }
-
-  .logo {
-    font-size: 23px;
-  }
-
-  .menu-toggle {
-    display: block;
-  }
-
-  nav {
-    display: none;
-    width: 100%;
-    flex-direction: column;
-    align-items: stretch;
-    padding: 10px 0 17px;
-    gap: 0;
-  }
-
-  nav.open {
-    display: flex;
-  }
-
-  nav a {
-    padding: 10px;
-    border-top: 1px solid var(--border);
-  }
-
-  .header-actions .btn-light {
-    display: none;
-  }
-
-  .hero {
-    padding: 55px 0;
-  }
-
-  .hero h1 {
-    font-size: 30px;
-  }
-
-  .hero p {
-    font-size: 14px;
-  }
-
-  .search-box {
-    flex-direction: column;
-  }
-
-  .search-box .btn {
-    width: 100%;
-  }
-
-  section {
-    padding: 52px 0;
-  }
-
-  .section-heading h2 {
-    font-size: 24px;
-  }
-
-  .steps {
-    grid-template-columns: 1fr;
-  }
-
-  .provinces-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-
-  .provider-box {
-    padding: 30px 20px;
-    flex-direction: column;
-    text-align: center;
-  }
-
-  .provider-box .btn {
-    width: 100%;
-  }
-
-  .footer-grid {
-    grid-template-columns: 1fr;
-    gap: 22px;
-  }
-}
-</style>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#087d43">
+  <meta name="description" content="خدماتك: اكتشف الخدمات ومقدميها في جميع المحافظات السورية.">
+  <title>خدماتك | كل ما تحتاجه أقرب إليك</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <style>
+    :root{--g:#087d43;--g2:#0b9b55;--ink:#17251e;--muted:#68776f;--bg:#f5f8f6;--line:#e3ebe6;--white:#fff;--shadow:0 14px 40px #123c2410}
+    *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--ink);font-family:"Cairo",Arial,sans-serif}button,input,select,textarea{font:inherit}a{color:inherit;text-decoration:none}button{cursor:pointer}.wrap{width:min(1160px,92%);margin:auto}
+    header{background:#fff;border-bottom:1px solid var(--line);position:sticky;top:0;z-index:20}.nav{height:74px;display:flex;align-items:center;justify-content:space-between;gap:16px}.brand{display:flex;align-items:center;gap:10px;font-weight:900;font-size:22px;color:var(--g)}.logo{width:42px;height:42px;border-radius:13px;background:linear-gradient(145deg,#0ba45a,#066b39);display:grid;place-items:center;color:#fff;font-size:22px}.navlinks{display:flex;gap:22px;color:#45564c;font-weight:700;font-size:14px}.navlinks a:hover{color:var(--g)}.actions{display:flex;gap:8px;align-items:center}.btn{border:0;border-radius:12px;padding:10px 16px;font-weight:800;transition:.2s}.btn:hover{transform:translateY(-1px)}.primary{background:var(--g);color:#fff}.primary:hover{background:#066b39}.soft{background:#e9f5ee;color:var(--g)}.outline{background:#fff;border:1px solid var(--line);color:var(--ink)}.menu{display:none}
+    .hero{padding:62px 0 46px;background:radial-gradient(circle at 85% 20%,#d7f1e1 0,transparent 34%),linear-gradient(135deg,#f5fbf7,#edf7f0)}.hero-grid{display:grid;grid-template-columns:1.15fr .85fr;align-items:center;gap:34px}.eyebrow{display:inline-block;background:#e3f4e9;color:var(--g);border-radius:30px;padding:7px 13px;font-size:13px;font-weight:800}.hero h1{font-size:clamp(32px,5vw,53px);line-height:1.35;margin:17px 0 12px;font-weight:900}.hero h1 span{color:var(--g)}.hero p{color:var(--muted);font-size:17px;line-height:2;margin:0 0 22px;max-width:620px}.hero-buttons{display:flex;gap:10px;flex-wrap:wrap}.hero-card{background:#fff;border:1px solid #e4eee7;border-radius:24px;padding:24px;box-shadow:var(--shadow)}.hero-card h3{margin:0 0 15px}.stats{display:grid;grid-template-columns:repeat(2,1fr);gap:11px}.stat{background:#f5faf6;border-radius:15px;padding:15px}.stat strong{display:block;color:var(--g);font-size:23px}.stat span{font-size:13px;color:var(--muted)}.flag{display:flex;width:82px;height:8px;border-radius:8px;overflow:hidden;margin-top:20px}.flag i{flex:1}.flag i:nth-child(1){background:#087d43}.flag i:nth-child(2){background:#fff}.flag i:nth-child(3){background:#111}
+    section{padding:52px 0}.section-head{display:flex;justify-content:space-between;align-items:end;gap:15px;margin-bottom:22px}.section-head h2{margin:0;font-size:27px;font-weight:900}.section-head p{margin:5px 0 0;color:var(--muted)}.searchbox{display:grid;grid-template-columns:1fr 210px auto;gap:9px;background:#fff;padding:11px;border:1px solid var(--line);border-radius:17px;box-shadow:var(--shadow);margin:22px 0}.field{width:100%;border:1px solid var(--line);background:#fff;border-radius:11px;padding:11px 12px;outline:none;color:var(--ink)}.field:focus{border-color:#6db78c;box-shadow:0 0 0 3px #0b9b5514}.categories{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}.cat{border:1px solid var(--line);background:#fff;border-radius:16px;padding:17px;text-align:right;transition:.2s}.cat:hover{border-color:#9acbad;transform:translateY(-2px);box-shadow:var(--shadow)}.cat .icon{width:42px;height:42px;border-radius:13px;background:#eaf6ee;display:grid;place-items:center;font-size:21px;margin-bottom:9px}.cat strong{display:block}.cat small{color:var(--muted)}.empty{grid-column:1/-1;background:#fff;border:1px dashed #cbd9d0;padding:23px;border-radius:15px;text-align:center;color:var(--muted)}
+    .features{background:#fff}.feature-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}.feature{border:1px solid var(--line);border-radius:17px;padding:20px}.feature b{font-size:17px}.feature p{color:var(--muted);line-height:1.9;margin-bottom:0}.cta{background:linear-gradient(120deg,#075f34,#0b9650);color:#fff;border-radius:23px;padding:30px;display:flex;justify-content:space-between;align-items:center;gap:18px}.cta p{color:#d8f0e1;margin:6px 0 0}.cta .btn{background:#fff;color:var(--g)}footer{background:#10271b;color:#dce9e0;padding:35px 0 18px}.foot{display:flex;justify-content:space-between;gap:22px;flex-wrap:wrap}.foot p{color:#a9bdb0;max-width:470px;line-height:1.9}.copyright{border-top:1px solid #ffffff20;margin-top:22px;padding-top:15px;color:#a9bdb0;font-size:13px}
+    .modal{position:fixed;inset:0;background:#0c1e1480;display:none;align-items:center;justify-content:center;padding:15px;z-index:50}.modal.show{display:flex}.dialog{background:#fff;width:min(520px,100%);max-height:90vh;overflow:auto;border-radius:21px;padding:22px;box-shadow:0 20px 80px #0003}.dialog-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:14px}.dialog-head h3{margin:0;font-size:21px}.x{border:0;background:#f0f4f1;border-radius:10px;width:36px;height:36px;font-size:20px}.tabs{display:flex;background:#f0f5f1;border-radius:12px;padding:4px;margin-bottom:15px}.tabs button{flex:1;border:0;background:transparent;padding:8px;border-radius:9px;font-weight:800}.tabs button.active{background:#fff;color:var(--g);box-shadow:0 2px 8px #0000000c}.formgrid{display:grid;gap:10px}.formgrid label{font-size:13px;font-weight:800;color:#45564c}.formgrid label input,.formgrid label select,.formgrid label textarea{display:block;margin-top:5px}.formgrid textarea{min-height:75px;resize:vertical}.hint{font-size:12px;color:var(--muted);line-height:1.7}.notice{padding:10px 12px;border-radius:11px;background:#eff8f2;color:#17643a;font-size:13px;line-height:1.7;margin:9px 0}.status{min-height:20px;font-size:13px;color:var(--g);font-weight:700}.hidden{display:none!important}
+    @media(max-width:800px){.navlinks{display:none;position:absolute;top:74px;right:0;left:0;background:#fff;padding:17px 5%;border-bottom:1px solid var(--line);flex-direction:column}.navlinks.open{display:flex}.menu{display:inline-flex}.nav .actions .outline{display:none}.hero-grid{grid-template-columns:1fr}.hero{padding-top:42px}.categories{grid-template-columns:repeat(2,1fr)}.feature-grid{grid-template-columns:1fr}.searchbox{grid-template-columns:1fr}.section-head{align-items:start;flex-direction:column}.cta{align-items:start;flex-direction:column}}
+    @media(max-width:420px){.brand{font-size:19px}.actions .btn{padding:9px 11px}.hero h1{font-size:31px}.categories{gap:8px}.cat{padding:13px}}
+  </style>
 </head>
-
 <body>
-
 <header>
-  <div class="container header-inner">
-
-    <a href="#" class="logo">
-      <span class="logo-icon">⌂</span>
-      خدماتك
-      <span class="syrian-flag" aria-label="علم سوريا">
-        <span class="flag-green"></span>
-        <span class="flag-white">★ ★ ★</span>
-        <span class="flag-black"></span>
-      </span>
-    </a>
-
-    <button class="menu-toggle" id="menuToggle" aria-label="القائمة">☰</button>
-
-    <nav id="mainNav">
-      <a href="#">الرئيسية</a>
-      <a href="#services">الخدمات</a>
-      <a href="#how">كيف تعمل المنصة؟</a>
-      <a href="#provinces">المحافظات</a>
-      <a href="#providers">مقدمو الخدمات</a>
-    </nav>
-
-    <div class="header-actions">
-      <a href="#customer" class="btn btn-light">دخول العملاء</a>
-      <a href="#providers" class="btn btn-primary">انضم إلينا</a>
-    </div>
-
+  <div class="wrap nav">
+    <a class="brand" href="#"><span class="logo">خ</span><span>خدماتك</span></a>
+    <nav class="navlinks" id="navlinks"><a href="#categories">الأقسام</a><a href="#how">كيف تعمل؟</a><a href="#join">انضم كمقدم خدمة</a></nav>
+    <div class="actions"><button class="btn outline" id="loginOpen">تسجيل الدخول</button><button class="btn primary" id="signupOpen">إنشاء حساب</button><button class="btn soft menu" id="menuBtn" aria-label="القائمة">☰</button></div>
   </div>
 </header>
-
 <main>
-
-<div class="hero">
-  <div class="container hero-content">
-
-    <div>
-      <span class="badge">منصة سورية تجمع الخدمات في مكان واحد</span>
-
-      <h1>
-        كل ما تحتاجه من خدمات،
-        <span>تجده في خدماتك</span>
-      </h1>
-
-      <p>
-        اكتشف مقدمي الخدمات بالقرب منك، وقارن الخيارات،
-        وتواصل مع الشخص المناسب لإنجاز ما تحتاجه بسهولة.
-      </p>
-
-      <form class="search-box" id="searchForm">
-        <input
-          type="search"
-          id="serviceSearch"
-          placeholder="ابحث عن خدمة مثل الكهرباء أو الصيانة..."
-          aria-label="ابحث عن خدمة"
-        >
-        <button type="submit" class="btn btn-primary">ابحث الآن</button>
-      </form>
-
-      <div class="hero-note">
-        نعمل على جمع الخدمات في جميع المحافظات السورية.
-      </div>
+  <section class="hero">
+    <div class="wrap hero-grid">
+      <div><span class="eyebrow">منصة سورية للخدمات</span><h1>كل ما تحتاجه من خدمات، <span>أقرب إليك</span></h1><p>اكتشف أصحاب المهن والخبرات، قارن الخدمات، وتواصل مع مقدم الخدمة المناسب في محافظتك. خدماتك تجمع احتياجاتك اليومية في مكان واحد.</p><div class="hero-buttons"><a class="btn primary" href="#categories">اكتشف الخدمات</a><button class="btn soft" id="heroJoin">سجّل كمقدم خدمة</button></div></div>
+      <div class="hero-card"><h3>منصة واحدة لاحتياجات كثيرة</h3><div class="stats"><div class="stat"><strong>14</strong><span>محافظة سورية ضمن خطة التغطية</span></div><div class="stat"><strong>متنوعة</strong><span>تصنيفات ومهن قابلة للتوسع</span></div><div class="stat"><strong>بسهولة</strong><span>بحث حسب الخدمة والمنطقة</span></div><div class="stat"><strong>بثقة</strong><span>ملفات وتقييمات عند تفعيلها</span></div></div><div class="flag" aria-label="ألوان العلم السوري"><i></i><i></i><i></i></div></div>
     </div>
-
-    <div class="hero-art">
-      <div class="art-content">
-        <div class="art-symbol">🏡</div>
-        <h3>خدماتك أقرب إليك</h3>
-        <p>خدمات متنوعة في منصة واحدة</p>
-      </div>
-    </div>
-
-  </div>
-</div>
-
-<section id="services">
-  <div class="container">
-
-    <div class="section-heading">
-      <h2>اكتشف الخدمات</h2>
-      <p>اختر المجال الذي تبحث عنه وابدأ رحلتك</p>
-    </div>
-
-    <div class="services-grid" id="servicesGrid">
-
-      <div id="categoriesLoading" class="no-results" style="display:block">
-  جار تحميل التصنيفات...
-</div>
-      </div>
-
-      <div class="no-results" id="noResults">
-        لا توجد خدمة مطابقة لبحثك في هذه القائمة.
-      </div>
-
-    </div>
-  </div>
-</section>
-
-<section class="how" id="how">
-  <div class="container">
-
-    <div class="section-heading">
-      <h2>كيف تعمل خدماتك؟</h2>
-      <p>ثلاث خطوات بسيطة للوصول إلى الخدمة المناسبة</p>
-    </div>
-
-    <div class="steps">
-
-      <div class="step">
-        <div class="step-number">1</div>
-        <h3>ابحث عن الخدمة</h3>
-        <p>اختر نوع الخدمة التي تحتاجها والموقع المناسب لك.</p>
-      </div>
-
-      <div class="step">
-        <div class="step-number">2</div>
-        <h3>اكتشف مقدمي الخدمات</h3>
-        <p>تعرّف على مقدمي الخدمات واختر الأنسب لاحتياجاتك.</p>
-      </div>
-
-      <div class="step">
-        <div class="step-number">3</div>
-        <h3>تواصل واطلب خدمتك</h3>
-        <p>تواصل مع مقدم الخدمة واتفق معه على التفاصيل.</p>
-      </div>
-
-    </div>
-  </div>
-</section>
-
-<section id="provinces">
-  <div class="container">
-
-    <div class="section-heading">
-      <h2>خدماتك في جميع المحافظات السورية</h2>
-      <p>طموحنا أن تصل المنصة إلى كل مدينة وبلدة في سوريا</p>
-    </div>
-
-    <div class="provinces-grid">
-      <div class="province">دمشق</div>
-      <div class="province">ريف دمشق</div>
-      <div class="province">حلب</div>
-      <div class="province">حمص</div>
-      <div class="province">حماة</div>
-      <div class="province">اللاذقية</div>
-      <div class="province">طرطوس</div>
-      <div class="province">إدلب</div>
-      <div class="province">درعا</div>
-      <div class="province">السويداء</div>
-      <div class="province">القنيطرة</div>
-      <div class="province">دير الزور</div>
-      <div class="province">الرقة</div>
-      <div class="province">الحسكة</div>
-    </div>
-
-  </div>
-</section>
-
-<section id="customer">
-  <div class="container">
-    <div class="section-heading">
-      <h2>أهلاً بك في خدماتك</h2>
-      <p>نسعى لتسهيل وصولك إلى الخدمات التي تحتاجها.</p>
-      <a href="#services" class="btn btn-primary">اكتشف الخدمات</a>
-    </div>
-  </div>
-</section>
-
-<div class="provider-area" id="providers">
-  <div class="container">
-
-    <div class="provider-box">
-      <div>
-        <h2>هل تقدم خدمة؟</h2>
-        <p>
-          انضم إلى مجتمع مقدمي الخدمات في خدماتك،
-          وابدأ بتعريف العملاء بخدماتك.
-        </p>
-      </div>
-
-      <a href="#register" class="btn">التسجيل كمقدم خدمة ←</a>
-    </div>
-
-  </div>
-</div>
-
+  </section>
+  <section id="categories"><div class="wrap">
+    <div class="section-head"><div><h2>اكتشف الخدمات</h2><p>اختر القسم أو ابحث عن الخدمة التي تحتاجها.</p></div></div>
+    <div class="searchbox"><input id="searchInput" class="field" type="search" placeholder="مثلاً: كهربائي، مدرس رياضيات، صيانة..." aria-label="ابحث عن خدمة"><select id="locationSelect" class="field" aria-label="اختر المحافظة"><option value="">كل المحافظات</option></select><button class="btn primary" id="searchBtn">بحث</button></div>
+    <div id="categoryGrid" class="categories"><div class="empty">جارٍ تحميل الأقسام...</div></div>
+    <p id="loadStatus" class="hint" role="status"></p>
+  </div></section>
+  <section class="features" id="how"><div class="wrap"><div class="section-head"><div><h2>كيف تعمل خدماتك؟</h2><p>خطوات بسيطة للعثور على الخدمة المناسبة.</p></div></div><div class="feature-grid">
+    <article class="feature"><b>١. ابحث واختر</b><p>اكتب اسم الخدمة وحدد المحافظة أو المنطقة للوصول إلى الأقسام المناسبة.</p></article>
+    <article class="feature"><b>٢. تعرّف وتواصل</b><p>راجع معلومات مقدم الخدمة وتفاصيله، ثم تواصل عبر وسائل التواصل المتاحة.</p></article>
+    <article class="feature"><b>٣. قيّم تجربتك</b><p>بعد توفر نظام الطلبات الموثق، شارك تقييمك لتساعد الآخرين على الاختيار.</p></article>
+  </div></div></section>
+  <section id="join"><div class="wrap"><div class="cta"><div><h2 style="margin:0">هل تقدم خدمة أو تمتلك عملاً؟</h2><p>أنشئ حضورك المهني وساعد العملاء على اكتشاف خدماتك.</p></div><button class="btn" id="joinBtn">ابدأ التسجيل</button></div></div></section>
 </main>
+<footer><div class="wrap"><div class="foot"><div><div class="brand" style="color:#fff"><span class="logo">خ</span>خدماتك</div><p>منصة سورية تهدف إلى تسهيل اكتشاف الخدمات ومقدميها وربط أصحاب الاحتياجات بأصحاب الخبرة في مختلف المحافظات.</p></div><div><b>روابط مهمة</b><p><a href="#categories">الأقسام</a><br><a href="#how">كيف تعمل؟</a><br><a href="#join">انضم إلينا</a></p></div></div><div class="copyright">© <span id="year"></span> خدماتك. جميع الحقوق محفوظة.</div></div></footer>
 
-<footer>
-  <div class="container">
-
-    <div class="footer-grid">
-
-      <div>
-        <h3>خدماتك</h3>
-        <p>
-          منصة سورية تهدف إلى جمع الخدمات ومقدميها
-          في مكان واحد، وتسهيل الوصول إليها في جميع المحافظات.
-        </p>
-      </div>
-
-      <div>
-        <h3>روابط مهمة</h3>
-        <div class="footer-links">
-          <a href="#services">الخدمات</a>
-          <a href="#provinces">المحافظات</a>
-          <a href="#providers">مقدمو الخدمات</a>
-        </div>
-      </div>
-
-      <div>
-        <h3>حسابك</h3>
-        <div class="footer-links">
-          <a href="#customer">العملاء</a>
-          <a href="#register">التسجيل كمقدم خدمة</a>
-        </div>
-      </div>
-
+<div class="modal" id="authModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+  <div class="dialog"><div class="dialog-head"><h3 id="modalTitle">مرحباً بك في خدماتك</h3><button class="x" id="closeModal" aria-label="إغلاق">×</button></div>
+    <div class="tabs"><button class="active" data-mode="login">دخول</button><button data-mode="signup">حساب جديد</button></div>
+    <div class="formgrid">
+      <label>طريقة التسجيل<select id="authMethod" class="field"><option value="email">البريد الإلكتروني</option><option value="phone">رقم الهاتف</option></select></label>
+      <label id="emailLabel">البريد الإلكتروني<input id="email" class="field" type="email" autocomplete="email" placeholder="name@example.com"></label>
+      <label id="phoneLabel" class="hidden">رقم الهاتف السوري<input id="phone" class="field" type="tel" inputmode="tel" autocomplete="tel" placeholder="+963 9xxxxxxxx"></label>
+      <label id="passwordLabel">كلمة المرور<input id="password" class="field" type="password" autocomplete="current-password" minlength="8" placeholder="8 أحرف على الأقل"></label>
+      <label id="nameLabel" class="hidden">الاسم الكامل<input id="fullName" class="field" type="text" autocomplete="name" placeholder="الاسم الكامل"></label>
+      <div class="notice" id="phoneNotice">يتطلب الدخول برقم الهاتف تفعيل مزود رسائل SMS في إعدادات Supabase وإتاحة الإرسال إلى سوريا.</div>
+      <button class="btn primary" id="authSubmit">تسجيل الدخول</button><div class="status" id="authStatus" role="status"></div>
+      <p class="hint">لا تشارك رمز التحقق أو كلمة المرور مع أي شخص. التسجيل بالهاتف لن يعمل قبل إعداد خدمة الرسائل والتحقق من دعمها للأرقام السورية.</p>
     </div>
-
-    <div class="copyright">
-      خدماتك © 2026 - منصتك السورية للخدمات
-      <br>
-      معاً نبني مستقبلاً أفضل للخدمات في سوريا
-    </div>
-
   </div>
-</footer>
-
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-
+</div>
 <script>
- const SUPABASE_URL = "https://pabzzoxfqxhkdjhimkla.supabase.co";
-
-const SUPABASE_ANON_KEY = "sb_publishable_wDr3qsA3fDiXdgV9kYoLKQ_SOVuNtFa";
-
-const supabaseClient = window.supabase.createClient(
-  SUPABASE_URL,
-  SUPABASE_ANON_KEY
-);
-
-// القائمة الرئيسية
-const menuToggle = document.getElementById("menuToggle");
-const mainNav = document.getElementById("mainNav");
-
-if (menuToggle && mainNav) {
-  menuToggle.addEventListener("click", () => {
-    mainNav.classList.toggle("open");
-  });
-
-  mainNav.querySelectorAll("a").forEach(link => {
-    link.addEventListener("click", () => {
-      mainNav.classList.remove("open");
-    });
-  });
-}
-
-// التصنيفات
-const servicesGrid = document.getElementById("servicesGrid");
-const searchForm = document.getElementById("searchForm");
-const searchInput = document.getElementById("serviceSearch");
-
-let allCategories = [];
-let currentParent = null;
-
-const categoryIcons = {
-  construction: "🏗️",
-  electricity: "⚡",
-  plumbing: "🚰",
-  maintenance: "🔧",
-  education: "📚",
-  technology: "💻",
-  transport: "🚚",
-  cleaning: "🧹",
-  beauty: "💇",
-  health: "🩺",
-  delivery: "📦",
-  professional: "💼"
-};
-
-function showMessage(message) {
-  servicesGrid.innerHTML = "";
-
-  const box = document.createElement("div");
-  box.className = "no-results";
-  box.style.display = "block";
-  box.textContent = message;
-
-  servicesGrid.appendChild(box);
-}
-
-function createCategoryCard(category) {
-  const card = document.createElement("button");
-  card.type = "button";
-  card.className = "service-card";
-
-  const icon = document.createElement("div");
-  icon.className = "service-icon";
-  icon.textContent =
-    category.icon ||
-    categoryIcons[category.slug] ||
-    "📌";
-
-  const title = document.createElement("h3");
-  title.textContent = category.name_ar;
-
-  const description = document.createElement("p");
-  description.textContent =
-    category.description || "اكتشف الخدمات المتاحة";
-
-  card.append(icon, title, description);
-
-  card.addEventListener("click", () => {
-    if (!category.parent_id) {
-      currentParent = category;
-      renderSubcategories(category);
-    }
-  });
-
-  return card;
-}
-
-function renderCategories(categories) {
-  servicesGrid.innerHTML = "";
-
-  if (categories.length === 0) {
-    showMessage("لا توجد تصنيفات مطابقة.");
-    return;
+(() => {
+  "use strict";
+  const SUPABASE_URL = "https://pabzzoxfqxhkdjhimkla.supabase.co";
+  const SUPABASE_ANON_KEY = "sb_publishable_wDr3qsA3fDiXdgV9kYoLKQ_SOVuNtFa";
+  const $ = (id) => document.getElementById(id);
+  const state = { mode: "login", supabase: null, categories: [], locations: [] };
+  const escapeHtml = (value) => String(value ?? "").replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+  const setStatus = (message, isError=false) => { $("authStatus").textContent = message; $("authStatus").style.color = isError ? "#b42318" : "var(--g)"; };
+  function openModal(mode="login") { state.mode=mode; updateMode(); $("authModal").classList.add("show"); setStatus(""); }
+  function closeModal() { $("authModal").classList.remove("show"); }
+  function updateMode() {
+    document.querySelectorAll(".tabs button").forEach(b => b.classList.toggle("active", b.dataset.mode===state.mode));
+    $("modalTitle").textContent = state.mode==="login" ? "تسجيل الدخول" : "إنشاء حساب جديد";
+    $("authSubmit").textContent = state.mode==="login" ? "تسجيل الدخول" : "إنشاء الحساب";
+    $("nameLabel").classList.toggle("hidden", state.mode==="login");
+    $("password").autocomplete = state.mode==="login" ? "current-password" : "new-password";
+    setStatus("");
   }
-
-  categories.forEach(category => {
-    servicesGrid.appendChild(createCategoryCard(category));
-  });
-}
-
-function renderSubcategories(parent) {
-  const children = allCategories.filter(
-    category => category.parent_id === parent.id
-  );
-
-  servicesGrid.innerHTML = "";
-
-  const backButton = document.createElement("button");
-  backButton.type = "button";
-  backButton.className = "category-back";
-  backButton.textContent = "← العودة إلى جميع التصنيفات";
-
-  backButton.addEventListener("click", () => {
-    currentParent = null;
-    renderCategories(
-      allCategories.filter(category => !category.parent_id)
-    );
-  });
-
-  servicesGrid.appendChild(backButton);
-
-  const heading = document.createElement("h3");
-  heading.textContent = parent.name_ar;
-  heading.style.gridColumn = "1 / -1";
-  servicesGrid.appendChild(heading);
-
-  if (children.length === 0) {
-    showMessage("لا توجد تصنيفات فرعية حالياً.");
-    return;
+  function updateMethod() {
+    const phone = $("authMethod").value==="phone";
+    $("emailLabel").classList.toggle("hidden", phone);
+    $("phoneLabel").classList.toggle("hidden", !phone);
+    $("phoneNotice").classList.toggle("hidden", !phone);
+    $("passwordLabel").classList.toggle("hidden", phone);
+    $("password").required = !phone;
   }
-
-  children.forEach(category => {
-    servicesGrid.appendChild(createCategoryCard(category));
-  });
-}
-
-// تحميل التصنيفات من قاعدة البيانات
-async function loadCategories() {
-  showMessage("جار تحميل التصنيفات...");
-
-  const { data, error } = await supabaseClient
-    .from("categories")
-    .select("id, name_ar, slug, parent_id, sort_order, icon, description")
-    .eq("is_active", true)
-    .order("sort_order", { ascending: true });
-
-  if (error) {
-    console.error("خطأ تحميل التصنيفات:", error);
-    showMessage("تعذر تحميل التصنيفات. يرجى تحديث الصفحة.");
-    return;
+  function normalizeSyrianPhone(raw) {
+    let digits = String(raw).replace(/[^\d+]/g,"");
+    if (digits.startsWith("00")) digits = "+" + digits.slice(2);
+    if (digits.startsWith("0")) digits = "+963" + digits.slice(1);
+    if (/^9\d{8}$/.test(digits)) digits = "+963" + digits;
+    return digits;
   }
-
-  allCategories = data || [];
-
-  const mainCategories = allCategories.filter(
-    category => !category.parent_id
-  );
-
-  if (mainCategories.length === 0) {
-    showMessage("لا توجد تصنيفات متاحة حالياً.");
-    return;
-  }
-
-  renderCategories(mainCategories);
-}
-
-// البحث
-if (searchForm && searchInput) {
-  searchForm.addEventListener("submit", event => {
-    event.preventDefault();
-
-    const query = searchInput.value.trim().toLowerCase();
-
-    if (!query) {
-      if (currentParent) {
-        renderSubcategories(currentParent);
+  async function handleAuth() {
+    if (!state.supabase) { setStatus("الاتصال بخدمة الحسابات غير متاح حالياً. تحقق من الاتصال وإعدادات المشروع.", true); return; }
+    const method = $("authMethod").value;
+    const password = $("password").value;
+    const fullName = $("fullName").value.trim();
+    const submit = $("authSubmit");
+    submit.disabled = true; setStatus("جارٍ تنفيذ الطلب...");
+    try {
+      let result;
+      if (method==="email") {
+        const email = $("email").value.trim();
+        if (!email) throw new Error("أدخل البريد الإلكتروني.");
+        if (state.mode==="login") result = await state.supabase.auth.signInWithPassword({email,password});
+        else {
+          if (fullName.length<2) throw new Error("أدخل الاسم الكامل.");
+          result = await state.supabase.auth.signUp({email,password,options:{data:{full_name:fullName}}});
+        }
       } else {
-        renderCategories(
-          allCategories.filter(category => !category.parent_id)
-        );
+        const phone = normalizeSyrianPhone($("phone").value);
+        if (!/^\+9639\d{8}$/.test(phone)) throw new Error("أدخل رقم هاتف سوري صالحاً بصيغة +9639xxxxxxxx.");
+        if (state.mode==="login") result = await state.supabase.auth.signInWithOtp({phone});
+        else {
+          if (fullName.length<2) throw new Error("أدخل الاسم الكامل.");
+          result = await state.supabase.auth.signInWithOtp({phone,options:{data:{full_name:fullName},shouldCreateUser:true}});
+        }
       }
-      return;
-    }
-
-    const results = allCategories.filter(category =>
-      category.name_ar.toLowerCase().includes(query)
-    );
-
-    currentParent = null;
-    renderCategories(results);
-  });
-}
-
-// تشغيل التحميل
-loadCategories();
+      if (result.error) throw result.error;
+      if (method==="phone") setStatus("أُرسل طلب رمز التحقق إن كان مزود SMS مفعّلاً. أكمل التحقق من رسالة الهاتف.");
+      else if (state.mode==="signup") setStatus("تم إرسال طلب إنشاء الحساب. تحقق من بريدك إذا كان تأكيد البريد مفعّلاً.");
+      else { setStatus("تم تسجيل الدخول بنجاح."); setTimeout(closeModal,900); }
+    } catch (error) { setStatus(error.message || "حدث خطأ غير متوقع.", true); }
+    finally { submit.disabled=false; }
+  }
+  async function loadCategories() {
+    const grid = $("categoryGrid");
+    if (!state.supabase) { grid.innerHTML='<div class="empty">تعذر الاتصال بقاعدة البيانات. يمكنك مراجعة إعدادات الاتصال لاحقاً.</div>'; $("loadStatus").textContent=""; return; }
+    try {
+      const {data,error} = await state.supabase.from("categories").select("id,name_ar,description,icon,parent_id").eq("is_active",true).is("parent_id",null).order("sort_order",{ascending:true}).limit(40);
+      if (error) throw error;
+      state.categories = data || [];
+      renderCategories(state.categories);
+      $("loadStatus").textContent = state.categories.length ? "الأقسام المعروضة محمّلة من قاعدة بيانات خدماتك." : "لا توجد أقسام نشطة حالياً في قاعدة البيانات.";
+    } catch (error) { grid.innerHTML='<div class="empty">لم نتمكن من تحميل الأقسام حالياً. حاول مجدداً لاحقاً.</div>'; $("loadStatus").textContent=error.message; }
+  }
+  function renderCategories(items) {
+    const grid=$("categoryGrid");
+    if (!items.length) { grid.innerHTML='<div class="empty">لا توجد نتائج مطابقة. جرّب كلمة بحث أخرى.</div>'; return; }
+    grid.innerHTML=items.map(item=>`<button class="cat" type="button" data-category="${escapeHtml(item.id)}"><span class="icon">${escapeHtml(item.icon || "✦")}</span><strong>${escapeHtml(item.name_ar)}</strong><small>${escapeHtml(item.description || "اكتشف الخدمات ضمن هذا القسم")}</small></button>`).join("");
+  }
+  async function loadLocations() {
+    if (!state.supabase) return;
+    try {
+      const {data,error}=await state.supabase.from("locations").select("id,name_ar,location_type").eq("is_active",true).is("parent_id",null).order("sort_order",{ascending:true}).limit(30);
+      if (error) throw error;
+      state.locations=data||[];
+      $("locationSelect").innerHTML='<option value="">كل المحافظات</option>'+state.locations.map(x=>`<option value="${escapeHtml(x.id)}">${escapeHtml(x.name_ar)}</option>`).join("");
+    } catch (error) { console.warn("Locations could not be loaded:",error.message); }
+  }
+  function searchCategories() {
+    const term=$("searchInput").value.trim().toLocaleLowerCase("ar");
+    const matches=state.categories.filter(c=>!term || (c.name_ar||"").toLocaleLowerCase("ar").includes(term) || (c.description||"").toLocaleLowerCase("ar").includes(term));
+    renderCategories(matches);
+  }
+  function init() {
+    $("year").textContent=new Date().getFullYear();
+    if (window.supabase?.createClient) state.supabase=window.supabase.createClient(SUPABASE_URL,SUPABASE_ANON_KEY);
+    $("loginOpen").addEventListener("click",()=>openModal("login"));
+    $("signupOpen").addEventListener("click",()=>openModal("signup"));
+    ["heroJoin","joinBtn"].forEach(id=>$(id).addEventListener("click",()=>openModal("signup")));
+    $("closeModal").addEventListener("click",closeModal);
+    $("authModal").addEventListener("click",e=>{if(e.target===$("authModal"))closeModal();});
+    document.addEventListener("keydown",e=>{if(e.key==="Escape")closeModal();});
+    document.querySelectorAll(".tabs button").forEach(b=>b.addEventListener("click",()=>{state.mode=b.dataset.mode;updateMode();}));
+    $("authMethod").addEventListener("change",updateMethod);
+    $("authSubmit").addEventListener("click",handleAuth);
+    $("searchBtn").addEventListener("click",searchCategories);
+    $("searchInput").addEventListener("input",searchCategories);
+    $("menuBtn").addEventListener("click",()=>$("navlinks").classList.toggle("open"));
+    $("navlinks").querySelectorAll("a").forEach(a=>a.addEventListener("click",()=>$("navlinks").classList.remove("open")));
+    updateMethod(); loadCategories(); loadLocations();
+    if (state.supabase) state.supabase.auth.onAuthStateChange((_event,session)=>{if(session?.user) console.info("خدماتك: user session active");});
+  }
+  document.addEventListener("DOMContentLoaded",init);
+})();
 </script>
 </body>
-        </html>
+</html>
