@@ -899,7 +899,92 @@ footer p, footer a {
     grid-template-columns: 1fr;
     gap: 22px;
   }
+}/* KHADAMATAK - FINAL DESIGN OVERRIDES */
+
+:root {
+  --green: #08764a;
+  --green-dark: #06452f;
+  --green-light: #e8f3ec;
+  --bg: #faf9f5;
 }
+
+header {
+  background: rgba(6, 55, 38, .97);
+  border-bottom-color: rgba(255,255,255,.12);
+}
+
+header .logo,
+header nav a {
+  color: #fff;
+}
+
+header .logo-icon {
+  background: rgba(255,255,255,.13);
+  color: #fff;
+}
+
+header .menu-toggle {
+  background: rgba(255,255,255,.13);
+  color: #fff;
+}
+
+.hero {
+  background:
+    radial-gradient(circle at 5% 15%, #dceee1 0, transparent 30%),
+    linear-gradient(120deg, #f7f8f1, #fff 60%, #edf5ed);
+}
+
+.hero-art {
+  background: linear-gradient(145deg, #176a48, #0a422f);
+  border-radius: 30px;
+}
+
+.section-heading h2 {
+  color: #075538;
+  font-weight: 900;
+}
+
+.service-card {
+  border-radius: 20px;
+  box-shadow: 0 8px 25px rgba(12,65,42,.07);
+}
+
+.service-card:hover {
+  transform: translateY(-7px);
+  box-shadow: 0 16px 35px rgba(20,70,43,.12);
+}
+
+.how {
+  background: linear-gradient(135deg, #edf5ed, #f7f8f2);
+}
+
+.provider-box {
+  background: linear-gradient(115deg, #063e2b, #08764a, #15915b);
+  border-radius: 27px;
+}
+
+footer {
+  background: #082f23;
+}
+
+.flag-white {
+  color: #087d43;
+}
+
+@media (max-width: 600px) {
+  nav {
+    background: #06452f;
+  }
+
+  nav a {
+    color: white;
+    border-color: rgba(255,255,255,.12);
+  }
+
+  .hero-art {
+    min-height: 225px;
+  }
+    }
 </style>
 </head>
 
